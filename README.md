@@ -21,6 +21,13 @@
 | `setAnimated(boolean)` | Включает/выключает анимацию вращения |
 | `setHidden(boolean)` | Скрывает/показывает блок |
 
+## Технологии
+
+- HTML5
+- CSS3 (адаптив, медиа-запросы)
+- JavaScript ES6+
+- GitHub Pages
+
 ## Запуск
 
 Откройте `index.html` в браузере.
