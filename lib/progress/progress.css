@@ -1,0 +1,52 @@
+:root {
+  --stroke-to-radius: 0.2;
+  --radius: calc(100% / (2 + var(--stroke-to-radius)));
+  --stroke: calc(var(--stroke-to-radius) * var(--radius));
+  --stroke-dasharray: calc(2 * var(--pi) * var(--radius));
+  --svg-offset: calc(var(--radius) + var(--stroke) / 2);
+  --progress-color: #2661f7;
+  --progress-shadow-color: #eff3f6;
+  --pi: 3.14159265358979;
+}
+
+.progress-svg-container {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.progress-svg-container-hidden {
+  opacity: 0;
+}
+
+.progress-svg-progress {
+  fill: none;
+  stroke: var(--progress-color);
+  stroke-linecap: butt;
+  stroke-width: var(--stroke);
+  stroke-dasharray: var(--stroke-dasharray);
+  transform: translate(var(--svg-offset), var(--svg-offset));
+}
+
+@keyframes progress-animation {
+  from {
+    stroke-dashoffset: var(--stroke-dasharray);
+  }
+}
+
+.progress-svg-progress-normal {
+  transition: stroke-dashoffset 1s;
+}
+
+.progress-svg-progress-animating {
+  animation: progress-animation 1s infinite;
+}
+
+.progress-svg-shadow {
+  fill: none;
+  stroke: var(--progress-shadow-color);
+  stroke-linecap: butt;
+  stroke-width: var(--stroke);
+  stroke-dasharray: var(--stroke-dasharray);
+  transform: translate(var(--svg-offset), var(--svg-offset));
+}

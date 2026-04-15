@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>OzonTest App</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="src/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="lib/progress/progress.js"></script>
+    <link href="lib/progress/progress.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="main-container">
+      <div class="name-wrap">
+        <div class="name">Progress</div>
+      </div>
+      <div class="progress-wrap">
+        <div id="progress-container" class="progress-container"></div>
+      </div>
+      <div class="controls-wrap">
+        <div class="controls-container">
+          <span class="controls-box">
+            <div class="controls">
+              <label class="input-value">
+                <input
+                  id="input-value__text"
+                  class="input-value__text"
+                  type="text"
+                  inputmode="numeric"
+                />
+                <span class="toggle__label">Value</span>
+              </label>
+            </div>
+          </span>
+          <span class="controls-box">
+            <div class="controls">
+              <label id="toggle-animate" class="toggle toggle-animate">
+                <input
+                  id="toggle-animate__checkbox"
+                  class="toggle_input toggle-animate__checkbox"
+                  type="checkbox"
+                />
+                <span class="toggle_box toggle-animate__switch"></span>
+                <span class="toggle__label">Animate</span>
+              </label>
+            </div>
+          </span>
+          <span class="controls-box">
+            <div class="controls">
+              <label id="toggle-hide" class="toggle toggle-hide">
+                <input
+                  id="toggle-hide__checkbox"
+                  class="toggle_input toggle-hide__checkbox"
+                  type="checkbox"
+                />
+                <span class="toggle_box toggle-hide__switch"></span>
+                <span class="toggle__label">Hide</span>
+              </label>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const bar = new ProgressBar();
+    window.addEventListener("load", function () {
+      document.getElementById("progress-container").appendChild(bar.render());
+    });
+
+    const valueInput = document.getElementById("input-value__text");
+    valueInput.addEventListener("input", (event) => {
+      let i = Number.parseInt(valueInput.value);
+      if (i >= 0 && i <= 100) {
+        valueInput.value = i.toString();
+      } else {
+        valueInput.value = valueInput.value.slice(0, -1);
+      }
+
+      bar.setValue(valueInput.value);
+    });
+
+    let anime = false;
+    document
+      .getElementById("toggle-animate__checkbox")
+      .addEventListener("change", (event) => {
+        anime = !anime;
+        bar.setAnimated(anime);
+      });
+
+    let hide = false;
+    document
+      .getElementById("toggle-hide__checkbox")
+      .addEventListener("change", (event) => {
+        hide = !hide;
+        bar.setHidden(hide);
+      });
+  </script>
+</html>
