@@ -21,13 +21,3 @@
 | `setAnimated(boolean)` | Включает/выключает анимацию вращения |
 | `setHidden(boolean)` | Скрывает/показывает блок |
 
-## Использование
-
-```javascript
-// Инициализация
-const progress = new ProgressCircle('#container');
-
-// Управление
-progress.setValue(75);        // 75%
-progress.setAnimated(true);   // включить вращение
-progress.setHidden(false);    // показать блок
